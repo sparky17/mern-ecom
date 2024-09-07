@@ -12,7 +12,7 @@ Contributing
 License
 Features
 
-
+       
 Product Management: Create, read, and delete products.
 Responsive UI: View products on a responsive React frontend.
 RESTful API: CRUD operations for product management.

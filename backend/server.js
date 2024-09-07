@@ -18,7 +18,7 @@ app.post('/api/products', async (req, res) => {
     if (!name || !price || !image) {
         console.error("check ")
         return res.status(400).json({ success: false, message: 'Please provide all details' });
-    }
+    }       
 
     // Create a new product instance
     const newProduct = new Product({ name, price, image });
@@ -36,7 +36,7 @@ app.delete('/api/deleteProduct/:id',async (req,res)=>{
     const {id} =req.params;
     try{
         console.log(id)
-        const deletedProduct=await Product.findByIdAndDelete(id)
+        const deletedProduct=await Product.findByIdAndDelete({_id:Object()})
         if (!deletedProduct) {
             return res.status(404).json({ success: false, message: 'Product not found' });
         }
