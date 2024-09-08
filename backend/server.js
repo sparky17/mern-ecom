@@ -36,7 +36,7 @@ app.delete('/api/deleteProduct/:id',async (req,res)=>{
     const {id} =req.params;
     try{
         console.log(id)
-        const deletedProduct=await Product.findByIdAndDelete({_id:Object()})
+        const deletedProduct=await Product.findByIdAndDelete(id );
         if (!deletedProduct) {
             return res.status(404).json({ success: false, message: 'Product not found' });
         }
@@ -46,6 +46,12 @@ app.delete('/api/deleteProduct/:id',async (req,res)=>{
       console.error('Error deleting product:', error);
       res.status(500).json({ success: false, message: 'Internal server error' });
     }
+})
+
+app.get('/' ,async (req,res) =>{
+    const allData= await Product.find();
+    console.log(allData)
+    res.status(201).json(allData)
 })
 
 // Global error handling middleware (optional)
