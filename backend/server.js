@@ -1,12 +1,14 @@
 const express = require('express');
 const connectDB = require('./config/db'); // Ensure this path is correct
 const productRoutes = require('./routes/Product.route'); // Corrected the route import
-
+const cors = require('cors');
 const app = express();
 
 // Middleware to parse URL-encoded data and JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+// Apply CORS middleware
+app.use(cors());
 
 // Use product routes for API
 app.use("/api/products", productRoutes);
