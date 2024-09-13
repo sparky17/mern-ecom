@@ -32,4 +32,11 @@ export const useProductStore = create((set) => ({
       return { success: false, "message": 'An error occurred while creating the product' };
     }
   },
+  fetchProduct :async ()=>{
+    const res=await fetch('http://localhost:3000/api/products');
+    const data = await res.json();
+    set({products:data.data})
+  }
 }));
+
+
